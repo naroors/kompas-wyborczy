@@ -95,4 +95,41 @@ body {
     }
 }
 
+@media (max-width: 1200px) {
+    .navbar {
+        margin: 0 100px 0 100px;
+    }
+}
+
+@media (max-width: 992px) {
+    .navbar {
+        margin: 0 50px 0 50px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        margin: 0 20px 0 20px;'
+        text-align: center;
+    }
+
+    .navbar .menu {
+        display: none;
+    }
+}
+
+.burger-menu {
+    display: none;
+}
+
+.hero {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
 // naroors

@@ -5,13 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Kompas Wyborczy</title>
 
+        <!-- css -->
         <link rel="stylesheet" href="/src/css/style.css">
+
+        <!-- fa -->
+        <script src="https://kit.fontawesome.com/c0b0b901e3.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="navbar">
             <div class="logo">
                 Kompas Wyborczy<span class="dot">.</span>
             </div>
+            <a href="javascript:void(0);" class="burger-menu" onclick="openMenu()">
+                <i class="fa fa-bars" style="color: #000; text-decoration: none; font-weight: bold;"></i>
+            </a>
             <div class="menu">
                 <ul>
                     <li><a href="#">O kompasie</a></li>
@@ -21,7 +28,25 @@
                 </ul>
             </div>
         </div>
+
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Kompas Wyborczy</h1>
+                <p>Test, który pomoże Ci znaleźć partię, która najlepiej odzwierciedla Twoje poglądy.</p>
+                <a href="#" class="btn-test">Rozpocznij test</a>
+            </div>
+        </div>
     </body>
+    <script>
+        function openMenu() {
+            var menu = document.querySelector('.menu');
+            if (menu.style.display === "none") {
+                menu.style.display = "block";
+            } else {
+                menu.style.display = "none";
+            }
+        }
+    </script>
 </html>
 
 <!-- 
