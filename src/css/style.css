@@ -151,7 +151,10 @@ body {
     color: #fff;
 }
 
-/* add an image background to hero, the image is in /img/hero-bg.jpg */
+.hero > .hero-content > p {
+    max-width: 600px;
+}
+
 .hero {
     background-image: url('../img/hero-bg.png');
     background-size: cover;
@@ -188,19 +191,19 @@ body {
 .counter span {
     font-size: 24px;
     font-weight: 700;
-    color: #fff; /* Change to #000 for black text */
+    color: #fff; 
 }
 
 .counter span#result {
     font-size: 48px;
     font-weight: 700;
-    color: #f00; /* Change to #000 for black text */
+    color: #f00;
 }
 
 .counter span.days {
     font-size: 24px;
     font-weight: 700;
-    color: #f00; /* Change to #000 for black text */
+    color: #f00;
 }
 
 // naroors
