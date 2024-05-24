@@ -1,3 +1,8 @@
+function openMenu() {
+    const navMenu = document.querySelector(".nav-menu");
+    navMenu.classList.toggle("active");
+}
+
 function countdown() {
     var now = new Date();
     var eventDate = new Date(now.getFullYear(), 5, 9); // June is 5 in JavaScript Date

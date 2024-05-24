@@ -123,6 +123,7 @@ body {
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .container > .box-frame > .answer-buttons > button:nth-child(1) {
@@ -184,5 +185,18 @@ body {
     font-weight: 700;
     cursor: pointer;
 }
+
+.container > .box-frame > .answer-buttons > button:hover {
+    background-color: #666;
+    color: #fff;
+    padding: 0.85rem 1.25rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
 
 
