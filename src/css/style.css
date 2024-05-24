@@ -63,7 +63,7 @@ body {
     margin: 0 10px;
     font-size: 16px;
     font-weight: 600;
-    color: #fff;
+    color: #000;
     text-decoration: none;
 }
 
@@ -71,7 +71,7 @@ body {
     padding: 10px 20px;
     border-radius: 5px;
     background-color: transparent;
-    color: #fff;
+    color: #000;
     text-decoration: none;
     border: 3px solid #f00;
     transition: 0.3s;
@@ -162,20 +162,24 @@ body {
     width: 100%;
     text-align: center;
     transition: 0.3s ease-in-out;
+    color: #000;
     z-index: 2;
 }
 
 .nav-item
 {
+    color: #000;
     margin: 50px 0;
 }
 
 .nav-item a{
+    color: #000;
     border-bottom: 0.5mm ridge #000;
 }
 
 .nav-item2
 {
+    color: #000;
     margin: 50px 0;
    
 }
