@@ -32,32 +32,67 @@
                     <button class="answer-btn" id="niezgadzam się" onclick="nextQuestion()">Nie zgadzam się</button>
                 </div>
                 <div class="question-counter">
-                    <button class="question-btn" onclick="goToQuestion(1)">1</button>
-                    <button class="question-btn" onclick="goToQuestion(2)">2</button>
-                    <button class="question-btn" onclick="goToQuestion(3)">3</button>
-                    <button class="question-btn" onclick="goToQuestion(4)">4</button>
-                    <button class="question-btn" onclick="goToQuestion(5)">5</button>
-                    <button class="question-btn" onclick="goToQuestion(6)">6</button>
-                    <button class="question-btn" onclick="goToQuestion(7)">7</button>
-                    <button class="question-btn" onclick="goToQuestion(8)">8</button>
-                    <button class="question-btn" onclick="goToQuestion(9)">9</button>
-                    <button class="question-btn" onclick="goToQuestion(10)">10</button>
-                    <button class="question-btn" onclick="goToQuestion(11)">11</button>
-                    <button class="question-btn" onclick="goToQuestion(12)">12</button>
-                    <button class="question-btn" onclick="goToQuestion(13)">13</button>
-                    <button class="question-btn" onclick="goToQuestion(14)">14</button>
-                    <button class="question-btn" onclick="goToQuestion(15)">15</button>
-                    <button class="question-btn" onclick="goToQuestion(16)">16</button>
-                    <button class="question-btn" onclick="goToQuestion(17)">17</button>
-                    <button class="question-btn" onclick="goToQuestion(18)">18</button>
-                    <button class="question-btn" onclick="goToQuestion(19)">19</button>
-                    <button class="question-btn" onclick="goToQuestion(20)">20</button>
+                    <button class="question-btn">1</button>
+                    <button class="question-btn">2</button>
+                    <button class="question-btn">3</button>
+                    <button class="question-btn">4</button>
+                    <button class="question-btn">5</button>
+                    <button class="question-btn">6</button>
+                    <button class="question-btn">7</button>
+                    <button class="question-btn">8</button>
+                    <button class="question-btn">9</button>
+                    <button class="question-btn">10</button>
+                    <button class="question-btn">11</button>
+                    <button class="question-btn">12</button>
+                    <button class="question-btn">13</button>
+                    <button class="question-btn">14</button>
+                    <button class="question-btn">15</button>
+                    <button class="question-btn">16</button>
+                    <button class="question-btn">17</button>
+                    <button class="question-btn">18</button>
+                    <button class="question-btn">19</button>
+                    <button class="question-btn">20</button>
+                    <button class="question-btn">21</button>
+                    <button class="question-btn">22</button>
+                    <button class="question-btn">23</button>
+                    <button class="question-btn">24</button>
+                    <button class="question-btn">25</button>
+                    <button class="question-btn">WYNIK</button>
                     
                 </div>
             </div>
         </div>
         <script>
+            var questions = [
+                "Czy unia europejska powinna zostać zniszczona?",
+                "Czy unia europejska powinna zostać zniszczona? v2",
+                "Czy unia europejska powinna zostać zniszczona? v3",
+                "Czy unia europejska powinna zostać zniszczona? v4",
+                "Czy unia europejska powinna zostać zniszczona? v5",
+                "Czy unia europejska powinna zostać zniszczona? v6",
+                "Czy unia europejska powinna zostać zniszczona? v7",
+                "Czy unia europejska powinna zostać zniszczona? v8",
+                "Czy unia europejska powinna zostać zniszczona? v9",
+                "Czy unia europejska powinna zostać zniszczona? v10",
+                "Czy unia europejska powinna zostać zniszczona? v11",
+                "Czy unia europejska powinna zostać zniszczona? v12",
+                "Czy unia europejska powinna zostać zniszczona? v13",
+                "Czy unia europejska powinna zostać zniszczona? v14",
+                "Czy unia europejska powinna zostać zniszczona? v15",
+                "Czy unia europejska powinna zostać zniszczona? v16",
+                "Czy unia europejska powinna zostać zniszczona? v17",
+                "Czy unia europejska powinna zostać zniszczona? v18",
+                "Czy unia europejska powinna zostać zniszczona? v19",
+                "Czy unia europejska powinna zostać zniszczona? v20",
+                "Czy unia europejska powinna zostać zniszczona? v21",
+                "Czy unia europejska powinna zostać zniszczona? v22",
+                "Czy unia europejska powinna zostać zniszczona? v23",
+                "Czy unia europejska powinna zostać zniszczona? v24",
+                "Czy unia europejska powinna zostać zniszczona? v25",
+            ]
+
             var questionNumber = 1;
+            var maxQuestions = 25;
             document.querySelector('.question-btn').classList.add('active'); // Add 'active' class to the first question button
 
             function nextQuestion() {
@@ -66,14 +101,12 @@
                     currentQuestionButton.classList.remove('active');
                 }
                 
-                questionNumber++;
-                document.getElementById('question-number').innerHTML = questionNumber;
-                // disableButtons(); // Uncomment this if you have this function
-                
-                if (questionNumber > 20) {
-                    // Handle reaching the maximum question number
+                if (questionNumber < maxQuestions) {
+                    questionNumber++;
+                    document.getElementById('question-number').innerHTML = questionNumber;
+                    document.getElementById('question').innerHTML = questions[questionNumber - 1];
                 }
-
+                
                 var nextQuestionButton = document.querySelector('.question-btn:nth-child(' + questionNumber + ')');
                 if (nextQuestionButton) {
                     nextQuestionButton.classList.add('active');
@@ -89,9 +122,8 @@
                 if (questionNumber > 1) {
                     questionNumber--;
                     document.getElementById('question-number').innerHTML = questionNumber;
-                    // disableButtons(); // Uncomment this if you have this function
+                    document.getElementById('question').innerHTML = questions[questionNumber - 1]; // Add this line
                 }
-
                 var previousQuestionButton = document.querySelector('.question-btn:nth-child(' + questionNumber + ')');
                 if (previousQuestionButton) {
                     previousQuestionButton.classList.add('active');
