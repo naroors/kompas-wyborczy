@@ -49,26 +49,9 @@
                     <button class="answer-btn" id="niezgadzam się" onclick="nextQuestion()">Nie zgadzam się</button>
                 </div>
                 <div class="question-counter">
-                    <button class="question-btn" onclick="goToQuestion(1)">1</button>
-                    <button class="question-btn" onclick="goToQuestion(2)">2</button>
-                    <button class="question-btn" onclick="goToQuestion(3)">3</button>
-                    <button class="question-btn" onclick="goToQuestion(4)">4</button>
-                    <button class="question-btn" onclick="goToQuestion(5)">5</button>
-                    <button class="question-btn" onclick="goToQuestion(6)">6</button>
-                    <button class="question-btn" onclick="goToQuestion(7)">7</button>
-                    <button class="question-btn" onclick="goToQuestion(8)">8</button>
-                    <button class="question-btn" onclick="goToQuestion(9)">9</button>
-                    <button class="question-btn" onclick="goToQuestion(10)">10</button>
-                    <button class="question-btn" onclick="goToQuestion(11)">11</button>
-                    <button class="question-btn" onclick="goToQuestion(12)">12</button>
-                    <button class="question-btn" onclick="goToQuestion(13)">13</button>
-                    <button class="question-btn" onclick="goToQuestion(14)">14</button>
-                    <button class="question-btn" onclick="goToQuestion(15)">15</button>
-                    <button class="question-btn" onclick="goToQuestion(16)">16</button>
-                    <button class="question-btn" onclick="goToQuestion(17)">17</button>
-                    <button class="question-btn" onclick="goToQuestion(18)">18</button>
-                    <button class="question-btn" onclick="goToQuestion(19)">19</button>
-                    <button class="question-btn" onclick="goToQuestion(20)">20</button>
+                    <?php for ($i = 1; $i <= 20; $i++) { ?>
+                        <button class="question-btn" onclick="goToQuestion(<?php echo $i; ?>)"><?php echo $i; ?></button>
+                    <?php } ?>
                     <button class="question-btn" onclick="showResults()">WYNIK</button>
                 </div>
             </div>
