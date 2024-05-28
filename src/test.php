@@ -23,7 +23,7 @@
         <title>Test Europarlemntarny</title>
 
         <!-- css -->
-        <link rel="stylesheet" href="../src/css/test.css">
+        <link rel="stylesheet" href="../src/css/test2.css">
 
         <!-- fa -->
         <script src="https://kit.fontawesome.com/c0b0b901e3.js" crossorigin="anonymous"></script>
@@ -50,7 +50,7 @@
                 </div>
                 <div class="question-counter">
                     <?php for ($i = 1; $i <= 20; $i++) { ?>
-                        <button class="question-btn" onclick="goToQuestion(<?php echo $i; ?>)"><?php echo $i; ?></button>
+                        <button class="question-btn <?php echo $i > 1 ? 'disabled' : ''; ?>" onclick="goToQuestion(<?php echo $i; ?>)"><?php echo $i; ?></button>
                     <?php } ?>
                     <button class="question-btn" onclick="showResults()">WYNIK</button>
                 </div>
@@ -66,6 +66,7 @@
                     document.getElementById("question-number").innerText = index + 1;
                     document.getElementById("question").innerText = questions[index].tekst_pytania;
                     updateActiveButton(index + 1); // Aktualizuj aktywny przycisk
+                    updateDisabledButtons(); // Aktualizuj stan zablokowanych przycisków
                 }
             }
 
@@ -75,6 +76,17 @@
                 if (questionNumber > 0 && questionNumber <= questions.length) {
                     buttons[questionNumber - 1].classList.add("active");
                 }
+            }
+
+            function updateDisabledButtons() {
+                const buttons = document.querySelectorAll(".question-counter .question-btn");
+                buttons.forEach((button, index) => {
+                    if (index > currentQuestionIndex) {
+                        button.classList.add("disabled");
+                    } else {
+                        button.classList.remove("disabled");
+                    }
+                });
             }
 
             function saveAnswerAndNext(answer) {
@@ -99,7 +111,7 @@
             }
 
             function goToQuestion(index) {
-                if (index > 0 && index <= questions.length) {
+                if (index > 0 && index <= questions.length && index - 1 <= currentQuestionIndex) {
                     currentQuestionIndex = index - 1;
                     displayQuestion(currentQuestionIndex);
                 }
@@ -123,6 +135,7 @@
 
             // Wyświetl pierwsze pytanie po załadowaniu strony
             displayQuestion(currentQuestionIndex);
+
 
         </script>
         <?php $conn->close(); ?>
