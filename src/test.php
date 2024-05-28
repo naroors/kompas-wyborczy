@@ -49,51 +49,62 @@
                     <button class="answer-btn" id="niezgadzam się" onclick="nextQuestion()">Nie zgadzam się</button>
                 </div>
                 <div class="question-counter">
-                    <button class="question-btn">1</button>
-                    <button class="question-btn">2</button>
-                    <button class="question-btn">3</button>
-                    <button class="question-btn">4</button>
-                    <button class="question-btn">5</button>
-                    <button class="question-btn">6</button>
-                    <button class="question-btn">7</button>
-                    <button class="question-btn">8</button>
-                    <button class="question-btn">9</button>
-                    <button class="question-btn">10</button>
-                    <button class="question-btn">11</button>
-                    <button class="question-btn">12</button>
-                    <button class="question-btn">13</button>
-                    <button class="question-btn">14</button>
-                    <button class="question-btn">15</button>
-                    <button class="question-btn">16</button>
-                    <button class="question-btn">17</button>
-                    <button class="question-btn">18</button>
-                    <button class="question-btn">19</button>
-                    <button class="question-btn">20</button>
-                    <button class="question-btn">21</button>
-                    <button class="question-btn">22</button>
-                    <button class="question-btn">23</button>
-                    <button class="question-btn">24</button>
-                    <button class="question-btn">25</button>
-                    <button class="question-btn">WYNIK</button>
-                    
+                    <button class="question-btn" onclick="goToQuestion(1)">1</button>
+                    <button class="question-btn" onclick="goToQuestion(2)">2</button>
+                    <button class="question-btn" onclick="goToQuestion(3)">3</button>
+                    <button class="question-btn" onclick="goToQuestion(4)">4</button>
+                    <button class="question-btn" onclick="goToQuestion(5)">5</button>
+                    <button class="question-btn" onclick="goToQuestion(6)">6</button>
+                    <button class="question-btn" onclick="goToQuestion(7)">7</button>
+                    <button class="question-btn" onclick="goToQuestion(8)">8</button>
+                    <button class="question-btn" onclick="goToQuestion(9)">9</button>
+                    <button class="question-btn" onclick="goToQuestion(10)">10</button>
+                    <button class="question-btn" onclick="goToQuestion(11)">11</button>
+                    <button class="question-btn" onclick="goToQuestion(12)">12</button>
+                    <button class="question-btn" onclick="goToQuestion(13)">13</button>
+                    <button class="question-btn" onclick="goToQuestion(14)">14</button>
+                    <button class="question-btn" onclick="goToQuestion(15)">15</button>
+                    <button class="question-btn" onclick="goToQuestion(16)">16</button>
+                    <button class="question-btn" onclick="goToQuestion(17)">17</button>
+                    <button class="question-btn" onclick="goToQuestion(18)">18</button>
+                    <button class="question-btn" onclick="goToQuestion(19)">19</button>
+                    <button class="question-btn" onclick="goToQuestion(20)">20</button>
+                    <button class="question-btn" onclick="showResults()">WYNIK</button>
                 </div>
             </div>
         </div>
         <script>
             const questions = <?php echo json_encode($questions); ?>;
             let currentQuestionIndex = 0;
+            const answers = new Array(questions.length).fill(null); // Tablica do przechowywania odpowiedzi
 
             function displayQuestion(index) {
                 if (index >= 0 && index < questions.length) {
                     document.getElementById("question-number").innerText = index + 1;
                     document.getElementById("question").innerText = questions[index].tekst_pytania;
+                    updateActiveButton(index + 1); // Aktualizuj aktywny przycisk
                 }
+            }
+
+            function updateActiveButton(questionNumber) {
+                const buttons = document.querySelectorAll(".question-counter .question-btn");
+                buttons.forEach(button => button.classList.remove("active"));
+                if (questionNumber > 0 && questionNumber <= questions.length) {
+                    buttons[questionNumber - 1].classList.add("active");
+                }
+            }
+
+            function saveAnswerAndNext(answer) {
+                answers[currentQuestionIndex] = answer;
+                nextQuestion();
             }
 
             function nextQuestion() {
                 if (currentQuestionIndex < questions.length - 1) {
                     currentQuestionIndex++;
                     displayQuestion(currentQuestionIndex);
+                } else {
+                    submitAnswers();
                 }
             }
 
@@ -111,8 +122,25 @@
                 }
             }
 
+            function showResults() {
+                submitAnswers();
+            }
+
+            function submitAnswers() {
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "submit_answers.php", true);
+                xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        alert("Odpowiedzi zostały zapisane.");
+                    }
+                };
+                xhr.send(JSON.stringify({answers: answers}));
+            }
+
             // Wyświetl pierwsze pytanie po załadowaniu strony
             displayQuestion(currentQuestionIndex);
+
         </script>
         <?php $conn->close(); ?>
     </body>

@@ -62,17 +62,25 @@ body {
     margin-left: 20px;
     text-align: center;
     gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    height: 300px;
 }
 
 .container > .box-frame > .questions > p {
     font-size: 32px;
     font-weight: 400;
+    height: 300px;
     margin-bottom: 20px;
 }
 
 .container > .box-frame > .questions > p.question {
     font-size: 32px;
     font-weight: 600;
+    height: 300px;
     margin-bottom: 20px;
 }
 
@@ -282,10 +290,4 @@ button.btn-previous-question {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
-}
-
-@media (min-width: 768px) {
-    .question-btn:nth-child(n+10) {
-        display: none;
-    }
 }

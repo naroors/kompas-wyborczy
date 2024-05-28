@@ -5,10 +5,10 @@ function openMenu() {
 
 function countdown() {
     var now = new Date();
-    var eventDate = new Date(now.getFullYear(), 5, 9); // June is 5 in JavaScript Date
+    var eventDate = new Date(now.getFullYear(), 5, 9);
 
     if (now.getMonth() > 5 || (now.getMonth() == 5 && now.getDate() > 9)) {
-        eventDate.setFullYear(eventDate.getFullYear() + 1); // If the date has passed, set to next year
+        eventDate.setFullYear(eventDate.getFullYear() + 1);
     }
 
     var currentTime = now.getTime();
@@ -25,4 +25,4 @@ function countdown() {
 }
 
 countdown();
-setInterval(countdown, 1000 * 60 * 60 * 24); // Update the countdown every day
+setInterval(countdown, 1000 * 60 * 60 * 24);
